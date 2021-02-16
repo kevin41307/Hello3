@@ -12,6 +12,8 @@ public class EnemyAttribute : MonoBehaviour
     [HideInInspector]
     public bool firstInDead = false;
     public AudioClip attackAudio;
+    [HideInInspector]
+    public string enemyName;
 
 
     [HideInInspector]

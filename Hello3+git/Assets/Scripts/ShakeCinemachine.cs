@@ -13,10 +13,12 @@ public class ShakeCinemachine : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.O))
         {
             GenerateImpulseBig();
         }
+        */
     }
     public void GenerateImpulseBig()
     {

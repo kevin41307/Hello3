@@ -14,6 +14,7 @@ public class SkeletonAttribute : EnemyAttribute
         isAlive = true;
         firstInBurst = false;
         firstInDead = false;
+        enemyName = "Skeleton Warrior";
     }
 
     public float GetAttackDamage()

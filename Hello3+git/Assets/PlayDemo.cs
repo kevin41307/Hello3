@@ -28,11 +28,12 @@ public class PlayDemo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown("1"))
         {
             m_ExplosionAudioEvent1.Play(audioSourcePool.GetAudioSource());
         }
-
+        */
 
         /*
         if (Input.GetKeyDown("1"))
