@@ -52,7 +52,7 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < instance.slotGrid.transform.childCount; i++)
         {
-            if (instance.transform.childCount == 0)
+            if (instance.slotGrid.transform.childCount == 0)
                 break;
             Destroy(instance.slotGrid.transform.GetChild(i).gameObject);
             instance.slots.Clear();

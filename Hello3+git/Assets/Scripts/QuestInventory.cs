@@ -7,5 +7,5 @@ using UnityEngine;
 [System.Serializable]
 public class QuestInventory : ScriptableObject
 { 
-    public List<QuestColumn> questColumns = new List<QuestColumn>();
+    public List<Quest> questList = new List<Quest>();
 }

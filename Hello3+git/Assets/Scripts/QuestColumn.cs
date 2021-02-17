@@ -9,8 +9,11 @@ public class QuestColumn : MonoBehaviour
     public Database_SystemIcon systemIcon;
     public Text titleUI;
     public Image processStatus;
-
+    public GameObject prefab_DescriptionPanel;
+    Transform descriptionPanel;
+    bool isOpenDescriptionPanel = false;
     bool isFinished = false;
+    
     int requestQuantity = 0;
     int currentProgressNum = 0;
     string targetName;
@@ -18,19 +21,27 @@ public class QuestColumn : MonoBehaviour
 
     private void Awake()
     {
-    }
+        descriptionPanel = Instantiate(prefab_DescriptionPanel, transform.parent).GetComponent<Transform>();
+        descriptionPanel.gameObject.SetActive(false);
 
-
-    private void Start()
-    {
         Setup();
     }
 
-    void Setup()
+    private void OnEnable()
+    {
+        OnProcessBarChanged();
+    }
+
+    private void Start()
+    {
+        
+    }
+
+    public void Setup()
     {
         requestQuantity = questInfomation.quantity;
         targetName = questInfomation.targetName;
-        description = questInfomation.description;
+        descriptionPanel.GetComponentInChildren<Text>().text = questInfomation.description;
         titleUI.text = questInfomation.title + SetupProgressBar();
         OnProcessBarChanged();
     }
@@ -71,4 +82,9 @@ public class QuestColumn : MonoBehaviour
         else processStatus.sprite = systemIcon.GetIcon(Marks.types.xMark);
     }
 
+    public void OnBtnClicked()
+    {
+        isOpenDescriptionPanel = !isOpenDescriptionPanel;
+        descriptionPanel.gameObject.SetActive(isOpenDescriptionPanel);
+    }
 }

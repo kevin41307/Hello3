@@ -21,6 +21,6 @@ public class SkeletonAttribute : EnemyAttribute
     {
         return (firstInBurst) ? attackDamage * 1.35f : attackDamage;  
     }
-
+    
 
 }

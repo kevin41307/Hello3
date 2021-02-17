@@ -15,4 +15,4 @@ MonoBehaviour:
   title: DestorySkeleton
   targetName: Skeleton
   quantity: 3
-  description: skeleton is running anywhere in the dungeon. please destory them.
+  description: skeleton is running everywhere in the dungeon. please destory them.
