@@ -16,6 +16,6 @@ MonoBehaviour:
   itemImage: {fileID: 6240419937970178579, guid: 4e9ff197cc7e40849949a2332b67156e,
     type: 3}
   itemHeld: 5
-  itemInfo: 
+  itemInfo: Throw it to enemy and damage it
   equipable: 0
   addInQuickItemList: 1

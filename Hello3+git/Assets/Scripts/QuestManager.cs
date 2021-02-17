@@ -43,11 +43,18 @@ public class QuestManager : MonoBehaviour
         instance = this;
     }
 
+
+    private void OnEnable()
+    {
+        RefreshList();
+    }
+
     private void Start()
     {
         isOpen = questRoot.activeSelf;
-        RefreshList();
+        //RefreshList();
     }
+
 
 
     public static void RefreshList()
@@ -63,9 +70,16 @@ public class QuestManager : MonoBehaviour
         {
             if (instance.myQuest.questList[i].info == null) continue;
             QuestColumn qc = Instantiate(instance.questColumn, instance.listsRoot.transform).GetComponent<QuestColumn>();
-            qc.questInfomation = instance.myQuest.questList[i].info;
+            qc.quest = instance.myQuest.questList[i];
+            qc.quest.index = i;
             qc.Setup();
         }
+    }
+
+    public static void DeleteQuest(int index)
+    {
+        instance.myQuest.questList.RemoveAt(index);
+        RefreshList();
     }
 
     public static void AddQuest(QuestInfomation questInfo)

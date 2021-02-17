@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class QuestColumn : MonoBehaviour
 {
-    public QuestInfomation questInfomation;
+    public Quest quest;
     public Database_SystemIcon systemIcon;
     public Text titleUI;
     public Image processStatus;
@@ -14,8 +14,6 @@ public class QuestColumn : MonoBehaviour
     bool isOpenDescriptionPanel = false;
     bool isFinished = false;
     
-    int requestQuantity = 0;
-    int currentProgressNum = 0;
     string targetName;
     string description;
 
@@ -23,44 +21,39 @@ public class QuestColumn : MonoBehaviour
     {
         descriptionPanel = Instantiate(prefab_DescriptionPanel, transform.parent).GetComponent<Transform>();
         descriptionPanel.gameObject.SetActive(false);
+        descriptionPanel.GetComponent<QuestDescription>().parent = this.transform;
 
         Setup();
     }
 
-    private void OnEnable()
-    {
-        OnProcessBarChanged();
-    }
-
-    private void Start()
-    {
-        
-    }
-
     public void Setup()
     {
-        requestQuantity = questInfomation.quantity;
-        targetName = questInfomation.targetName;
-        descriptionPanel.GetComponentInChildren<Text>().text = questInfomation.description;
-        titleUI.text = questInfomation.title + SetupProgressBar();
+        if (quest.info == null) return;
+
+        targetName = quest.info.targetName;
+        descriptionPanel.GetComponentInChildren<Text>().text = quest.info.description;
+        titleUI.text = quest.info.title + SetupProgressBar();
+
+        if(quest.info.rewardSprite != null )
+        {
+            descriptionPanel.GetComponent<QuestDescription>().SetupRewardImage(quest.info.rewardSprite);
+        }
+        if (quest.info.targetSprite != null)
+        {
+            descriptionPanel.GetComponent<QuestDescription>().SetupTartgeImage(quest.info.targetSprite);
+        }
         OnProcessBarChanged();
     }
 
-    string SetupProgressBar()
-    {
-        string progress = "(" + currentProgressNum.ToString() + "/" + requestQuantity + ")";
-        
-        return progress;
-    }
+    string SetupProgressBar() => "(" + quest.currentProgressNum.ToString() + "/" + quest.info.quantity + ")";
 
     public void UpdateProcessBar(int delta)
     {
-        if (currentProgressNum + delta <= 0) return;
-        currentProgressNum += delta;
-        currentProgressNum = Mathf.Clamp(currentProgressNum, 0, requestQuantity);
+        if (quest.currentProgressNum + delta <= 0) return;
+        quest.currentProgressNum += delta;
+        quest.currentProgressNum = Mathf.Clamp(quest.currentProgressNum, 0, quest.info.quantity);
 
-
-        titleUI.text = questInfomation.title + SetupProgressBar();
+        titleUI.text = quest.info.title + SetupProgressBar();
         OnProcessBarChanged();
     }
 
@@ -74,12 +67,25 @@ public class QuestColumn : MonoBehaviour
 
     void OnProcessBarChanged()
     {
-        if (currentProgressNum < requestQuantity) isFinished = false;
+        if (quest.currentProgressNum < quest.info.quantity) isFinished = false;
         else
             isFinished = true;
 
-        if (isFinished) processStatus.sprite = systemIcon.GetIcon(Marks.types.vMark);
-        else processStatus.sprite = systemIcon.GetIcon(Marks.types.xMark);
+        if (isFinished)
+        {
+            processStatus.sprite = systemIcon.GetIcon(Marks.types.vMark);
+            GetComponent<Image>().color = new Color32(0x8C, 0xE5, 0x80, 0xFF);
+
+            descriptionPanel.GetComponent<QuestDescription>().OnQuestFinished();
+        }
+        else
+        {
+            processStatus.sprite = systemIcon.GetIcon(Marks.types.xMark);
+            GetComponent<Image>().color = new Color32(56, 62, 63, 255);
+
+            descriptionPanel.GetComponent<QuestDescription>().btn.color = new Color32(0xa2, 0xa2, 0xa2, 0xff);
+            descriptionPanel.GetComponent<QuestDescription>().button.interactable = false;
+        }
     }
 
     public void OnBtnClicked()
@@ -87,4 +93,6 @@ public class QuestColumn : MonoBehaviour
         isOpenDescriptionPanel = !isOpenDescriptionPanel;
         descriptionPanel.gameObject.SetActive(isOpenDescriptionPanel);
     }
+
+
 }

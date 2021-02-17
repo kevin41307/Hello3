@@ -14,5 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: DeliveryPotion
   targetName: HealPotion
+  targetSprite: {fileID: 8943728508470143933, guid: 4e9ff197cc7e40849949a2332b67156e,
+    type: 3}
   quantity: 10
+  rewardName: Money
+  rewardSprite: {fileID: -4128788053119245966, guid: 4e9ff197cc7e40849949a2332b67156e,
+    type: 3}
+  rewardQuantity: 200
   description: It is shot of potion in hospital.

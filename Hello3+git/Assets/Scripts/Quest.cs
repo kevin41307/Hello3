@@ -6,21 +6,15 @@ using UnityEngine;
 [System.Serializable]
 public class Quest
 {
+    public int index;
     public QuestInfomation info;
+    
     public int currentProgressNum = 0;
-
 
     public Quest()
     {
 
     }
-    public Quest(QuestInfomation _info)
-    {
-        info = _info;
-    }
+    public Quest(QuestInfomation _info) => info = _info;
 
-    public void Setup(QuestInfomation _info)
-    {
-        info = _info;
-    }
 }

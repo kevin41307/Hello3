@@ -16,6 +16,6 @@ MonoBehaviour:
   itemImage: {fileID: -8553582175004071258, guid: 4e9ff197cc7e40849949a2332b67156e,
     type: 3}
   itemHeld: 8
-  itemInfo: 
+  itemInfo: 'Increase flame damage '
   equipable: 0
   addInQuickItemList: 1

@@ -14,22 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questList:
   - info: {fileID: 11400000, guid: df3a712e03add6c4c90b9c510fb5c377, type: 2}
-    currentProgressNum: 0
-  - info: {fileID: 0}
-    currentProgressNum: 0
-  - info: {fileID: 0}
-    currentProgressNum: 0
-  - info: {fileID: 0}
-    currentProgressNum: 0
-  - info: {fileID: 0}
-    currentProgressNum: 0
-  - info: {fileID: 0}
-    currentProgressNum: 0
-  - info: {fileID: 0}
-    currentProgressNum: 0
-  - info: {fileID: 0}
-    currentProgressNum: 0
-  - info: {fileID: 0}
-    currentProgressNum: 0
-  - info: {fileID: 0}
-    currentProgressNum: 0
+    currentProgressNum: 1
+  - info: {fileID: 11400000, guid: df3a712e03add6c4c90b9c510fb5c377, type: 2}
+    currentProgressNum: 1
