@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -72,6 +73,37 @@ public class InventoryManager : MonoBehaviour
 
         Game.quickItemBarSingle.RefreshQuickItemBar();
         
+    }
+
+    public static bool IsItemInBag(string theItemName)
+    {
+        bool isExist = false;
+        for (int i = 0; i < instance.myBag.itemList.Count; i++)
+        {
+            if (instance.myBag.itemList[i] == null) break;
+            if (instance.myBag.itemList[i].itemName.IndexOf(theItemName) >= 0)
+            {
+                isExist = true;
+                break;
+            }
+        }
+        return isExist;
+    }
+
+
+    public static int AggregateOfItems(string theItemName)
+    {
+        if (!IsItemInBag(theItemName)) return -1;
+        int amount = 0;
+        for (int i = 0; i < instance.myBag.itemList.Count; i++)
+        {
+            if (instance.myBag.itemList[i].itemName.IndexOf(theItemName, StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                amount = instance.myBag.itemList[i].itemHeld;
+                break;
+            }
+        }
+        return amount;
     }
 
     public void SwitchOpen()

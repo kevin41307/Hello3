@@ -24,7 +24,7 @@ public class InteractableEnvObj : MonoBehaviour
     {
         currentDurability = maxDurability;
         this.gameObject.layer = LayerMask.NameToLayer("InteractableEnvObj");
-        Debug.Log("InteractableEnvObj: " + transform.name +" currentDurability: " + currentDurability);
+        //Debug.Log("InteractableEnvObj: " + transform.name +" currentDurability: " + currentDurability);
     }
 
     void ChangeDurability(ChangeInfo info)

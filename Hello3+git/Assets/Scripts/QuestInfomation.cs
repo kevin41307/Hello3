@@ -6,6 +6,13 @@ public class QuestInfomation : ScriptableObject
 {
     public string title;
 
+    public enum ExecutionType
+    {
+        EliminateTarget,
+        CollectItem
+    }
+    public ExecutionType executionType;
+
     public string targetName;
     public Sprite targetSprite;
     public int quantity;

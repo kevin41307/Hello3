@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: DestorySkeleton
   m_EditorClassIdentifier: 
   title: DestorySkeleton
+  executionType: 0
   targetName: Skeleton
-  quantity: 3
+  targetSprite: {fileID: -1358798775388085895, guid: 4e9ff197cc7e40849949a2332b67156e,
+    type: 3}
+  quantity: 15
+  rewardName: Money
+  rewardSprite: {fileID: -4128788053119245966, guid: 4e9ff197cc7e40849949a2332b67156e,
+    type: 3}
+  rewardQuantity: 900
   description: skeleton is running everywhere in the dungeon. please destory them.

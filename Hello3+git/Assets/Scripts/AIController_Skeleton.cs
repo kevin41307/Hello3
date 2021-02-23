@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class AIController_Skeleton : AIController_Base
 {
     Animator animator;
@@ -39,6 +40,9 @@ public class AIController_Skeleton : AIController_Base
     bool disappeared = false;
     bool isInteracting = false;
 
+
+    //事件管理
+    public event System.EventHandler<System.EventArgs> OnEnemyDeath;
     public enum FSMState
     {
         Wander,
@@ -72,6 +76,11 @@ public class AIController_Skeleton : AIController_Base
 
         agent.baseOffset = -0.06666655f;
     }
+
+    private void Start()
+    {
+        
+    }
     public void Reset()
     {
         targetPlayer = null;
@@ -87,7 +96,7 @@ public class AIController_Skeleton : AIController_Base
         enemyCollider.enabled = true;
         enemyHpBar.Appear();
         enemyAttribute.Reset();
-        Debug.Log(enemyAttribute.firstInDead + " " + enemyAttribute.firstInBurst + " " + enemyAttribute.isAlive );
+        //Debug.Log(enemyAttribute.firstInDead + " " + enemyAttribute.firstInBurst + " " + enemyAttribute.isAlive );
         SetMaxAgentSpeed(wanderSpeed);
         animator.SetFloat("animationSpeed", 1f);
         StateChange(FSMState.Wander);
@@ -507,6 +516,8 @@ public class AIController_Skeleton : AIController_Base
             agent.isStopped = true;
             agent.enabled = false;
             ragdoll.DoRagdoll(true);
+
+            QuestManager.UpdateEliminateQuest(new QuestEventArgs(enemyAttribute.enemyName));
             this.SendMessage("BurstVFX_Off", SendMessageOptions.DontRequireReceiver);
 
             enemyCollider.enabled = false;

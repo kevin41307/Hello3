@@ -27,3 +27,4 @@ MonoBehaviour:
   - type: 3
     sprite: {fileID: 5445194590743825939, guid: 4e9ff197cc7e40849949a2332b67156e,
       type: 3}
+  systemIcon: {fileID: 11400000}

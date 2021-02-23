@@ -64,7 +64,7 @@ public class AttackUniversal : MonoBehaviour {
                 return;
             }
             
-            Debug.Log("hitpoint" + hitInfo.point);
+            //Debug.Log("hitpoint" + hitInfo.point);
             if (playerBattle.isFinishMoving)
             {
                 otherCA = null;

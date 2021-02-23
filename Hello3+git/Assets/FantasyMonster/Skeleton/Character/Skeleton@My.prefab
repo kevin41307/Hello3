@@ -766,6 +766,7 @@ GameObject:
   - component: {fileID: 2017935117}
   - component: {fileID: 2017935118}
   - component: {fileID: 749004782}
+  - component: {fileID: 743769876}
   m_Layer: 9
   m_Name: Skeleton@My
   m_TagString: Untagged
@@ -988,6 +989,7 @@ MonoBehaviour:
   isAlive: 1
   firstInDead: 0
   attackAudio: {fileID: 8300000, guid: 06559eca91203404b980f3b35550f5aa, type: 3}
+  enemyName: 
   attackDamage: 10
   firstInBurst: 0
 --- !u!114 &2017935117
@@ -1034,6 +1036,8 @@ MonoBehaviour:
   void_high1: {fileID: 0}
   bassDrop1_1: {fileID: 0}
   bassDrop1_2: {fileID: 0}
+  playerAudioCollection: {fileID: 11400000, guid: d435701144681a644a322bcf77544d0a,
+    type: 2}
   m_GuardAudioEvent1: {fileID: 0}
 --- !u!114 &749004782
 MonoBehaviour:
@@ -1049,6 +1053,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainColliderGo: {fileID: 1808285150066267918}
   ragdollRootGo: {fileID: 1808285150066267970}
+--- !u!114 &743769876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808285150066267916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c28e4f12ceb814ab04506ced3fa1e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolDepth: 2
+  maxVolume: 1
 --- !u!1 &1808285150066267918
 GameObject:
   m_ObjectHideFlags: 0
